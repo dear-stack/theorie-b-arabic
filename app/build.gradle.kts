@@ -1,6 +1,7 @@
+
 plugins {
-    id("com.android.application") version"8.6.1"
-    id("org.jetbrains.kotlin.android") version"2.0.21"
+    id("com.android.application") version "8.6.1"
+    id("org.jetbrains.kotlin.android") version "2.0.21"
 }
 
 android {
@@ -13,4 +14,9 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "1.1"
- kotlinOptions {jvmTarget="17"}
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
