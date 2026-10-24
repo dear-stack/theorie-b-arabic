@@ -19,12 +19,20 @@ class MainActivity : Activity() {
         webView = WebView(this)
         webView.setBackgroundColor(android.graphics.Color.rgb(243, 246, 244))
         webView.settings.javaScriptEnabled = true
+        webView.isClickable = true
+        webView.isFocusable = true
+        webView.isFocusableInTouchMode = true
         webView.settings.domStorageEnabled = true
         webView.settings.allowFileAccess = true
         webView.settings.allowContentAccess = true
         webView.settings.javaScriptCanOpenWindowsAutomatically = false
         webView.webViewClient = WebViewClient()
-        webView.webChromeClient = WebChromeClient()
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onConsoleMessage(message: android.webkit.ConsoleMessage): Boolean {
+                android.util.Log.e("TheorieBWebView", "${message.message()} -- line ${message.lineNumber()}")
+                return true
+            }
+        }
         webView.overScrollMode = View.OVER_SCROLL_NEVER
         setContentView(webView)
         if (savedInstanceState != null) webView.restoreState(savedInstanceState)
