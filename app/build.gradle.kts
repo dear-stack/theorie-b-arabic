@@ -13,5 +13,4 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "1.1"
-    }
-}
+ kotlinOptions {jvmTarget="17"}
